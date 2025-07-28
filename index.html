@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #4ab1e9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            background: #19518e;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 10px 10px 25px #cbd4db, -10px -10px 25px #ffffff;
+            text-align: center;
+            width: 320px;
+        }
+
+        h2 {
+            color: #d8d5d5;
+            margin-bottom: 30px;
+        }
+
+        input[type="number"] {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: inset 4px 4px 10px #cbd4db, inset -4px -4px 10px #ffffff;
+            background-color: #f9fafb;
+            outline: none;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #f0f4f8;
+            border: none;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px;
+            cursor: pointer;
+            box-shadow: 6px 6px 12px #cbd4db, -6px -6px 12px #ffffff;
+            transition: all 0.2s ease-in-out;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 2px 2px 6px #cbd4db, -2px -2px 6px #ffffff;
+        }
+
+        button img {
+            width: 30px;
+            height: 30px;
+        }
+
+        h3 {
+            margin-top: 25px;
+            color: #2d2d2d;
+            background-color: #e0eaf6;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: inset 3px 3px 7px #cbd4db, inset -3px -3px 7px #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Python Flask Calculator</h2>
+
+        <form method="POST">
+            <input type="number" step="any" name="num1" required placeholder="First Number">
+            <input type="number" step="any" name="num2" required placeholder="Second Number">
+
+            <div class="buttons">
+                <button type="submit" name="operation" value="add">
+                    <img src="{{ url_for('static', filename='images/plus.png') }}" alt="Add">
+                </button>
+                <button type="submit" name="operation" value="subtract">
+                    <img src="{{ url_for('static', filename='images/minus.png') }}" alt="Subtract">
+                </button>
+                <button type="submit" name="operation" value="multiply">
+                    <img src="{{ url_for('static', filename='images/close.png') }}" alt="Multiply">
+                </button>
+                <button type="submit" name="operation" value="divide">
+                    <img src="{{ url_for('static', filename='images/divide.png') }}" alt="Divide">
+                </button>
+            </div>
+        </form>
+
+        {% if result is not none %}
+            <h3> Result: {{ result }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
